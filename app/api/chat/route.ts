@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
     const body: ChatRequestBody = await request.json();
     const {
       messages,
-      model = "z-ai/glm-4.5-air:free",
+      model = "x-ai/grok-4.1-fast:free",
       temperature = 0.3,
       maxTokens = 2048,
     } = body;
