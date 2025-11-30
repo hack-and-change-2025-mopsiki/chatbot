@@ -19,7 +19,7 @@ interface ChatHistoryItem {
 
 export function ChatInterface() {
   const [messages, setMessages] = useState<Message[]>(
-    localStorage.getItem("messages")
+    typeof window !== "undefined" && localStorage.getItem("messages")
       ? JSON.parse(localStorage.getItem("messages") as string)
       : [
           {
