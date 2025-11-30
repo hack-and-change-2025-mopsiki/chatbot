@@ -5,7 +5,6 @@ import { toast } from "sonner";
 import { Button } from "./ui/button";
 import { useStreamChat } from "@/src/hooks/useStreamChat";
 import { marked } from "marked";
-
 interface Message {
   id: string;
   type: "user" | "assistant";
@@ -16,6 +15,8 @@ interface ChatHistoryItem {
   id: number;
   title: string;
 }
+
+const env = process.env.COLLECTOR_API_URL;
 
 export function ChatInterface() {
   const [messages, setMessages] = useState<Message[]>(
@@ -139,7 +140,7 @@ export function ChatInterface() {
     try {
       setIsCollectLoading(true);
       // Логика сбора данных
-      const response = await fetch(process.env.COLLECTOR_API_URL!, {
+      const response = await fetch(env!, {
         method: "POST",
         body: JSON.stringify({
           platforms: selectedPlatforms,
