@@ -16,7 +16,7 @@ interface ChatHistoryItem {
   title: string;
 }
 
-const env = process.env.COLLECTOR_API_URL;
+const COLLECTOR_API_URL = process.env.NEXT_PUBLIC_COLLECTOR_API_URL;
 
 export function ChatInterface() {
   const [messages, setMessages] = useState<Message[]>(
@@ -140,7 +140,7 @@ export function ChatInterface() {
     try {
       setIsCollectLoading(true);
       // Логика сбора данных
-      const response = await fetch(env!, {
+      const response = await fetch(COLLECTOR_API_URL!, {
         method: "POST",
         body: JSON.stringify({
           platforms: selectedPlatforms,
